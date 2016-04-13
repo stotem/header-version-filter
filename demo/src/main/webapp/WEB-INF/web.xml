@@ -1,0 +1,56 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>limitServlet</servlet-name>
+        <servlet-class>com.stotem.header.version.servlet.LimitServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>allServlet</servlet-name>
+        <servlet-class>com.stotem.header.version.servlet.AllServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deprecatedServlet</servlet-name>
+        <servlet-class>com.stotem.header.version.servlet.DeprecatedServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>rangeServlet</servlet-name>
+        <servlet-class>com.stotem.header.version.servlet.RangeServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TransferredServlet</servlet-name>
+        <servlet-class>com.stotem.header.version.servlet.TransferredServiceServlet</servlet-class>
+    </servlet>
+    <filter>
+        <filter-name>headerVersionFilter</filter-name>
+        <filter-class>com.stotem.header.version.filter.HeaderVersionFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>headerVersionFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <servlet-mapping>
+        <servlet-name>TransferredServlet</servlet-name>
+        <url-pattern>/service/transferred.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>rangeServlet</servlet-name>
+        <url-pattern>/service/range.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deprecatedServlet</servlet-name>
+        <url-pattern>/service/deprecated.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>allServlet</servlet-name>
+        <url-pattern>/service/all.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>limitServlet</servlet-name>
+        <url-pattern>/service/limit.do</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -81,9 +81,9 @@ public class HeaderVersion {
             }
             int modifiers = declaredMethod.getModifiers();
             // filter public method
-            if (!Modifier.isPublic(modifiers)) {
+            if (Modifier.isPrivate(modifiers)) {
                 if (logger.isDebugEnabled()) {
-                    logger.debug(String.format("Not public method [%s]", declaredMethod.getName()));
+                    logger.debug(String.format("Private method [%s]", declaredMethod.getName()));
                 }
                 continue;
             }
@@ -105,7 +105,7 @@ public class HeaderVersion {
             }
             // put the result map
             String uri = annotation.uri();
-            String key = (Tools.isEmpty(namespace) ? "":namespace) + (uri.startsWith("/") ? uri.replaceFirst("/","") :uri);
+            String key = (Tools.isEmpty(namespace) ? "/":namespace) + (uri.startsWith("/") ? uri.replaceFirst("/","") :uri);
             if (logger.isInfoEnabled()) {
                 logger.info(String.format("Found version mapping.[%s]", key));
             }
