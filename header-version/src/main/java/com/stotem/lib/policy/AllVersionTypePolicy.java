@@ -1,6 +1,8 @@
 package com.stotem.lib.policy;
 
+import com.stotem.lib.ConfigException;
 import com.stotem.lib.RequestVersionException;
+import com.stotem.lib.Tools;
 import com.stotem.lib.Version;
 
 /**
@@ -8,11 +10,13 @@ import com.stotem.lib.Version;
  */
 public class AllVersionTypePolicy implements VersionTypePolicy {
 
-    public String checkConfig(Version annotation) {
-        return null;
+
+    public void checkConfig(Version annotation) throws ConfigException {
+        if (Tools.isEmpty(annotation.uri())) {
+            throw new ConfigException("The uri is empty");
+        }
     }
 
-    public void checkRequestVersion(float requestV) throws RequestVersionException {
-
+    public void checkRequestVersion(Version versionConfig, float requestV) throws RequestVersionException {
     }
 }

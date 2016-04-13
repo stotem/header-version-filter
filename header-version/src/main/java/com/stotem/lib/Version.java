@@ -16,9 +16,9 @@ public @interface Version {
 
     VersionType type() default VersionType.All;
 
-    float min() default -1;
+    float min() default 0;
 
-    float max() default -1;
+    float max() default 0;
 
     String destURI() default "";
 
