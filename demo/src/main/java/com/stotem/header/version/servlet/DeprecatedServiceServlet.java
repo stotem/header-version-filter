@@ -14,7 +14,7 @@ import java.io.IOException;
 public class DeprecatedServiceServlet extends HttpServlet {
 
     @Override
-    @Version(uri = "/service/deprecated.do", type = Version.VersionType.Deprecated)
+    @Version(uri = "/service/deprecated.do", type = Version.VersionType.Deprecated, backupURI = "/service/all.do")
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().print("deprecated Service");
         resp.getWriter().flush();

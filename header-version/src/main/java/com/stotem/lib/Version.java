@@ -20,7 +20,7 @@ public @interface Version {
 
     float max() default 0;
 
-    String destURI() default "";
+    String backupURI() default "";
 
     enum VersionType {
         All(new AllVersionTypePolicy()),

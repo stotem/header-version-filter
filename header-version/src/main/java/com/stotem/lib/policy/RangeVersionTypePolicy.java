@@ -25,11 +25,20 @@ public class RangeVersionTypePolicy implements VersionTypePolicy {
     }
 
     public void checkRequestVersion(Version versionConfig, float requestV) throws RequestVersionException {
+        RequestVersionException exception = null;
         if (versionConfig.max() < requestV) {
-            throw new RequestVersionException(505, "The version of request is bigger than max");
+            exception = new RequestVersionException(505, "The version of request is bigger than max");
         }
         if (versionConfig.min() > requestV) {
-            throw new RequestVersionException(505, "The version of request is smaller than min");
+            exception = new RequestVersionException(505, "The version of request is smaller than min");
         }
+        if (Tools.isNull(exception)) {
+            return;
+        }
+        if (!Tools.isEmpty(versionConfig.backupURI())) {
+            exception.setBackupURI(versionConfig.backupURI());
+            exception.setCode(302);
+        }
+        throw exception;
     }
 }

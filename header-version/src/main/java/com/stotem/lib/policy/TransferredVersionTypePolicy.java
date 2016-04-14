@@ -14,12 +14,12 @@ public class TransferredVersionTypePolicy implements VersionTypePolicy {
         if (Tools.isEmpty(annotation.uri())) {
             throw new ConfigException("The uri is empty");
         }
-        if (Tools.isEmpty(annotation.destURI())) {
-            throw new ConfigException("The destURI is empty");
+        if (Tools.isEmpty(annotation.backupURI())) {
+            throw new ConfigException("The backupURI is empty");
         }
     }
 
     public void checkRequestVersion(Version versionConfig, float requestV) throws RequestVersionException {
-        throw new RequestVersionException(302, versionConfig.destURI());
+        throw new RequestVersionException(302, null, versionConfig.backupURI());
     }
 }

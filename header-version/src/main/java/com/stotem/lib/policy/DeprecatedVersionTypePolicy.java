@@ -17,6 +17,6 @@ public class DeprecatedVersionTypePolicy implements VersionTypePolicy {
     }
 
     public void checkRequestVersion(Version versionConfig, float requestV) throws RequestVersionException {
-        throw new RequestVersionException(301,"The request is Deprecated");
+        throw new RequestVersionException(301, "The request is Deprecated", versionConfig.backupURI());
     }
 }

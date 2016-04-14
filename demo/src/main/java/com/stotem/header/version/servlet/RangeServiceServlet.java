@@ -15,7 +15,7 @@ import java.io.IOException;
 public class RangeServiceServlet extends HttpServlet {
 
     @Override
-    @Version(uri = "range.do", type = Version.VersionType.Range,min = 10f, max = 11.2f)
+    @Version(uri = "range.do", type = Version.VersionType.Range,min = 10f, max = 11.2f, backupURI = "/service/all.do")
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().print("range service servlet");
         resp.getWriter().flush();

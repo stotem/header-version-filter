@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TransferredServiceServlet extends HttpServlet {
 
     @Override
-    @Version(uri = "transferred.do", type = Version.VersionType.Transferred, destURI = "/service/all.do")
+    @Version(uri = "transferred.do", type = Version.VersionType.Transferred, backupURI = "/service/all.do")
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().print("transferred service servlet");
         resp.getWriter().flush();

@@ -16,7 +16,7 @@ public class Server {
         System.out.println("hello2 method");
     }
 
-    @Version(uri = "hello3.do", type = Version.VersionType.Transferred, destURI = "hello2.do")
+    @Version(uri = "hello3.do", type = Version.VersionType.Transferred, backupURI = "hello2.do")
     public void hello3() {
         System.out.println("hello3 method");
     }

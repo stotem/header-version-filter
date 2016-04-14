@@ -21,7 +21,12 @@ public class LowLimitVersionTypePolicy implements VersionTypePolicy {
 
     public void checkRequestVersion(Version versionConfig, float requestV) throws RequestVersionException {
         if (versionConfig.min() > requestV) {
-            throw new RequestVersionException(505, "The version of request too small");
+            RequestVersionException exception = new RequestVersionException(505, "The version of request too small");
+            if (!Tools.isEmpty(versionConfig.backupURI())) {
+                exception.setBackupURI(versionConfig.backupURI());
+                exception.setCode(302);
+            }
+            throw exception;
         }
     }
 }
